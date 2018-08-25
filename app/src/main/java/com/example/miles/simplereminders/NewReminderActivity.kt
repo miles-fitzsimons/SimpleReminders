@@ -22,18 +22,15 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.time.Year
 import java.util.*
+import kotlin.collections.ArrayList
 
 class NewReminderActivity : AppCompatActivity() {
 
-//    var dateIcon: ImageView? = null
-//    var linearLayout: LinearLayout? = null as LinearLayout
-    var selectedDate: String = "31 August 2018"
     private var year: Int = 0
     private var month: Int = 0
     private var day: Int = 0
     private var hour: Int = 0
     private var minute: Int = 0
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,23 +80,24 @@ class NewReminderActivity : AppCompatActivity() {
     }
 
     fun onNewReminderSaveButtonPressed(view: View) {
+        // TODO ensure input isn't empty
         val inputString = new_reminder_input_remind_me_to.text.toString()
 
-        // Get the list of reminders
+        // Get the current list of reminders
         val appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext())
         val json = appSharedPrefs.getString("reminders", "")
         val gson = Gson()
-        val reminders = gson.fromJson<Any>(json, object : TypeToken<ArrayList<Reminder>>(){}.type) as ArrayList<Reminder>
-        reminders.add(Reminder(inputString))
+        var reminders:ArrayList<Reminder> = ArrayList()
+        if(!json.none()) {
+            reminders = gson.fromJson<Any>(json, object : TypeToken<ArrayList<Reminder>>() {}.type) as ArrayList<Reminder>
+        }
 
-        // Save the reminders
+        // Add the new reminder and save
+        reminders.add(Reminder(inputString, Date(year, month, day)))
         val prefsEditor = appSharedPrefs.edit()
-//        val gson = Gson()
-        val json2 = gson.toJson(reminders) //tasks is an ArrayList instance variable
-        prefsEditor.putString("reminders", json2)
+        val updatedJson = gson.toJson(reminders) //tasks is an ArrayList instance variable
+        prefsEditor.putString("reminders", updatedJson)
         prefsEditor.commit()
-        
-
 
         val remindersScreenIntent = Intent(this, MainActivity::class.java)
         startActivity(remindersScreenIntent)
