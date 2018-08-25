@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/new_reminder_view"
+    tools:context=".NewReminderActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/new_reminder_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_reminder_toolbar">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/new_reminder_input_remind_me_to"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_remind_me_to" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/new_reminder_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onNewReminderSaveButtonPressed"
+        android:text="@string/save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/date_linear_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+        <ImageView
+            android:id="@+id/date_icon"
+            android:layout_width="62dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="32dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_date_range_black_24dp" />
+
+        <TextView
+            android:id="@+id/date_text_view"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:layout_weight="1"
+            android:text="Today"
+            android:textSize="36sp"
+            tools:text="Today" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/time_linear_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_linear_layout">
+
+        <ImageView
+            android:id="@+id/time_icon"
+            android:layout_width="62dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="32dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_access_time_black_24dp" />
+
+        <TextView
+            android:id="@+id/time_text_view"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="32dp"
+            android:layout_weight="1"
+            android:text="NOWWW"
+            android:textSize="36sp"
+            tools:text="NOWWW" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/repeating_linear_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time_linear_layout">
+
+        <ImageView
+            android:id="@+id/repeating_icon"
+            android:layout_width="62dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="32dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_loop_black_24dp" />
+
+        <Switch
+            android:id="@+id/repeating_switch"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="32dp"
+            android:layout_weight="1"
+            android:checked="false"
+            tools:checked="false" />
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>

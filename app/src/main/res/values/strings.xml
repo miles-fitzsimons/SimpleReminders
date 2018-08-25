@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Simple Reminders</string>
+    <string name="share">Share</string>
+    <string name="settings">Settings</string>
+    <string name="about">About</string>
+    <string name="hint_remind_me_to">Remind me to...</string>
+    <string name="save">Save</string>
+    <string name="date">Date</string>
+</resources>
