@@ -41,7 +41,7 @@ class ReminderAdapter(private val context: Context, private val dataSource: Arra
 
             holder = ViewHolder()
             holder.reminderTextTextView = view.findViewById(R.id.reminder_list_reminder_text)
-
+            holder.dateTimeTextView = view.findViewById(R.id.reminder_list_date_time)
             view.tag = holder
         }
         else {
@@ -50,10 +50,12 @@ class ReminderAdapter(private val context: Context, private val dataSource: Arra
         }
 
         val reminderTextTextView = holder.reminderTextTextView
+        val dateTimeTextView = holder.dateTimeTextView
 
         val reminder = getItem(position) as Reminder
 
         reminderTextTextView.text = reminder.reminderText
+        dateTimeTextView.text = reminder.date
         // can set styles, fonts etc here
 
         return view
@@ -61,5 +63,6 @@ class ReminderAdapter(private val context: Context, private val dataSource: Arra
 
     private class ViewHolder {
         lateinit var reminderTextTextView: TextView
+        lateinit var dateTimeTextView: TextView
     }
 }

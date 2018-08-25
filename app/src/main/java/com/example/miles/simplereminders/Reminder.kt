@@ -5,4 +5,4 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.util.*
 
-class Reminder(val reminderText: String, val date: Date) {}
+class Reminder(val reminderText: String, val date: String) {}

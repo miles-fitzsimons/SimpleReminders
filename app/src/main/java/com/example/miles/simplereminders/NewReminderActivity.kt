@@ -31,6 +31,7 @@ class NewReminderActivity : AppCompatActivity() {
     private var day: Int = 0
     private var hour: Int = 0
     private var minute: Int = 0
+    private var dateString: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,13 +53,14 @@ class NewReminderActivity : AppCompatActivity() {
                 year = mYear
                 month = mMonth
                 day = mDay
+                dateString = "${day} ${getMonth(month)} ${year}"
 
                 if(todayYear == mYear && todayMonth == mMonth && todayDay == mDay) {
                     date_text_view.text = "Today"
                 } else if (todayYear == mYear && todayMonth == mMonth && todayDay + 1 == mDay) {
                     date_text_view.text = "Tomorrow"
                 } else {
-                    date_text_view.text =  "${day.toString()}/${(month + 1).toString()}/${year.toString()}"
+                    date_text_view.text =  dateString
                 }
             }, year, month, day)
             datePickerDialog.show()
@@ -79,8 +81,26 @@ class NewReminderActivity : AppCompatActivity() {
         }
     }
 
+    private fun getMonth(month: Int): String {
+        when (month) {
+            0 -> return "January"
+            1 -> return "February"
+            2 -> return "March"
+            3 -> return "April"
+            4 -> return "May"
+            5 -> return "June"
+            6 -> return "July"
+            7 -> return "August"
+            8 -> return "September"
+            9 -> return "October"
+            10 -> return "November"
+            11 -> return "December"
+        }
+        return "Oops!"
+    }
+
     fun onNewReminderSaveButtonPressed(view: View) {
-        // TODO ensure input isn't empty
+        // TODO ensure input isn't empty - show toast?
         val inputString = new_reminder_input_remind_me_to.text.toString()
 
         // Get the current list of reminders
@@ -93,7 +113,7 @@ class NewReminderActivity : AppCompatActivity() {
         }
 
         // Add the new reminder and save
-        reminders.add(Reminder(inputString, Date(year, month, day)))
+        reminders.add(Reminder(inputString, dateString))
         val prefsEditor = appSharedPrefs.edit()
         val updatedJson = gson.toJson(reminders) //tasks is an ArrayList instance variable
         prefsEditor.putString("reminders", updatedJson)
