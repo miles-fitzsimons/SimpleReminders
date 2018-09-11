@@ -1,8 +1,10 @@
 package com.example.miles.simplereminders
 
+import android.app.Notification
 import android.content.Intent
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.support.v4.app.NotificationCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -69,6 +71,12 @@ class MainActivity : AppCompatActivity() {
 //        }
         return super.onOptionsItemSelected(item)
     }
+
+    fun onNotifyMeButtonPressed(view: View) {
+        temp_text_view.text = "Notified!"
+//        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+    }
+
 
     fun onNewReminderButtonPressed(view: View) {
         val newReminderIntent = Intent(this, NewReminderActivity::class.java)
