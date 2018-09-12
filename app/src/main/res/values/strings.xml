@@ -6,4 +6,6 @@
     <string name="hint_remind_me_to">Remind me to...</string>
     <string name="save">Save</string>
     <string name="date">Date</string>
+    <string name="notification">New Notification</string>
+    <string name="notification_channel_description">This is a sample notification channel for demonstration purpose.</string>
 </resources>

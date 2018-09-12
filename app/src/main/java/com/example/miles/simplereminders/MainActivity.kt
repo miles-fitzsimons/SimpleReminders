@@ -13,14 +13,22 @@ import android.widget.ListView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var listView: ListView
+
+    private val mNotificationTime = Calendar.getInstance().timeInMillis + 5000
+    private var mNotified = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.main_toolbar))
+
+        if(!mNotified) {
+            NotificationUtils().setNotification(mNotificationTime, this@MainActivity)
+        }
 
         val appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext())
         val json = appSharedPrefs.getString("reminders", "")
