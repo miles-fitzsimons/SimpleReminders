@@ -8,6 +8,7 @@ import java.util.*
 
 class NotificationUtils {
     fun setNotification(timeInMilliSeconds: Long, activity: Activity) {
+        val xx = 1
         if(timeInMilliSeconds > 0) {
             val alarmManager = activity.getSystemService(Activity.ALARM_SERVICE) as AlarmManager
             val alarmIntent = Intent(activity.applicationContext, AlarmReceiver::class.java)

@@ -26,7 +26,6 @@ class NotificationService : IntentService("NotificationService") {
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.parseColor("#e8334a")
             notificationChannel.description = getString(R.string.notification_channel_description)
-//            notificationChannel.description = "Hi I'm a notification woop!"
             notificationChannel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
             notificationManager.createNotificationChannel(notificationChannel)
         }
@@ -49,7 +48,7 @@ class NotificationService : IntentService("NotificationService") {
             var notificationManager: NotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val notifyIntent = Intent(this, ResultActivity::class.java)
 
-            val title = "Sample Notification"
+            val title = "Reminder to do the thing"
             val message = "You have received a sample notification. This notification will take you to the details page."
 
 

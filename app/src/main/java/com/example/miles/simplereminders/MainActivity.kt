@@ -18,7 +18,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
     private lateinit var listView: ListView
 
-    private val mNotificationTime = Calendar.getInstance().timeInMillis + 5000
+    private val mNotificationTime = Calendar.getInstance().timeInMillis
     private var mNotified = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +26,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.main_toolbar))
 
-        if(!mNotified) {
-            NotificationUtils().setNotification(mNotificationTime, this@MainActivity)
-        }
+//        if(!mNotified) {
+//            NotificationUtils().setNotification(mNotificationTime, this@MainActivity)
+//        }
 
         val appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext())
         val json = appSharedPrefs.getString("reminders", "")
@@ -82,6 +82,10 @@ class MainActivity : AppCompatActivity() {
 
     fun onNotifyMeButtonPressed(view: View) {
         temp_text_view.text = "Notified!"
+        if(!mNotified) {
+            NotificationUtils().setNotification(Calendar.getInstance().timeInMillis, this@MainActivity)
+        }
+
 //        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
     }
 
